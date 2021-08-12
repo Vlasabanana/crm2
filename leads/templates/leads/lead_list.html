@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .lead{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding_left: 6px;
+            padding_left: 6px;
+            margin-top: 10px;
+            background_color: f6f6f6;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Это все лиды</h1>
+    {% for lead in leads %}
+        <div class="lead">
+            {{ lead.first_name}} {{ lead.last_name}} {{ lead.age }}
+        </div>
+    {% endfor %}
+</body>
+</html>

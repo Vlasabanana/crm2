@@ -20,6 +20,13 @@ def lead_detail(request, pk):
 
 
 def lead_create(request):
+    form = LeadForm()
+    if request.method == "POST":
+        print('Получение запроса')
+        form = LeadForm(request.POST)
+        if form.is_valid():
+            print("Форма верна")
+            print(form.cleaned_data)
     context = {
         "form": LeadForm()
     }

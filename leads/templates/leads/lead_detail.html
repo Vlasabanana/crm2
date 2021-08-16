@@ -17,7 +17,9 @@
 </head>
 
 <body>
-    <h1>Это все лиды</h1>
+  <a href="/leads">Назад</a>
+  <hr />
+    <h1>Профиль пользователя {{ lead.first_name }} </h1>
     {% for lead in leads %}
         <div class="lead">
             <a href="/leads/{{ lead.pk}}/">{{ lead.first_name}} {{ lead.last_name}}</a>. Age: {{ lead.age }}

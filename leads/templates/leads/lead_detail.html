@@ -20,10 +20,11 @@
   <a href="/leads">Назад</a>
   <hr />
     <h1>Профиль пользователя {{ lead.first_name }} </h1>
-    {% for lead in leads %}
+    <p>Возраст: {{ lead.age }}</p>
+    <p>Ответственный за лида: {{ lead.agent }}</p>
         <div class="lead">
             <a href="/leads/{{ lead.pk}}/">{{ lead.first_name}} {{ lead.last_name}}</a>. Age: {{ lead.age }}
         </div>
-    {% endfor %}
+
 </body>
 </html>

@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        .lead{
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding_left: 6px;
-            padding_left: 6px;
-            margin-top: 10px;
-            background_color: 00FA9A;
-            width: 100%;
-        }
-    </style>
-</head>
+{% extends 'base.html'%}
 
-<body>
+{% block content %}
   <a href="/leads">Назад</a>
   <hr />
     <h1>Профиль пользователя {{ lead.first_name }} </h1>
@@ -28,5 +12,4 @@
  <hr />
     <a href="/leads/{{ lead.pk }}/update/">Обновить</a>
     <a href="/leads/{{ lead.pk }}/delete/">Удалить</a>
-</body>
-</html>
+{% endblock content%}

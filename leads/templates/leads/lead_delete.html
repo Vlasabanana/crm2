@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block content %}
+  <a href="/leads">Назад</a>
+  <hr />
+    <h1>Вы уверены что хотите удалить лид?</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content%}

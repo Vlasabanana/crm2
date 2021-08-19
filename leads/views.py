@@ -62,6 +62,7 @@ def lead_create(request):
 
 class LeadUpdateView(UpdateView):
     template_name = "leads/lead_update.html"
+    queryset = Lead.objects.all()
     form_class = LeadModelForm
 
     def get_success_url(self):
@@ -81,6 +82,14 @@ def lead_update(request, pk):
         "lead": lead
     }
     return render(request, "leads/lead_update.html", context)
+
+
+class LeadDeleteView(DeleteView):
+    template_name = "leads/lead_delete.html"
+    queryset = Lead.objects.all()
+
+    def get_success_url(self):
+        return reverse('leads:lead-list')
 
 def lead_delete(request, pk):
     lead = Lead.objects.get(id=pk)

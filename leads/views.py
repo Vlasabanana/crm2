@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views import generic
@@ -45,6 +46,15 @@ class LeadCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse('leads:lead-list')
+
+    def form_valid(self, form):
+        send_mail(
+            subject=" Лид успешно создан",
+            message="Вернуться обратно",
+            from_email="test@test.com",
+            recipient_list=["test2@test.com"]
+        )
+        return super(LeadCreateView, self).form_valid(form)
 
 
 def lead_create(request):
@@ -95,3 +105,4 @@ def lead_delete(request, pk):
     lead = Lead.objects.get(id=pk)
     lead.delete()
     return redirect("/leads")
+

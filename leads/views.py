@@ -1,17 +1,24 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DeleteView, DetailView
 from .models import Lead, Agent
 from .forms import LeadForm, LeadModelForm
+
+
+
 
 
 class LandingPageView(TemplateView):
     template_name = "landing.html"
 
-
 def landing_page(request):
     return render(request, "landing.html")
 
+
+class LeadListView(ListView):
+    template_name = "leads/lead_list.html"
+    queryset = Lead.objects.all()
+    context_object_name = "leads"
 
 def lead_list(request):
     leads = Lead.objects.all()
@@ -20,6 +27,10 @@ def lead_list(request):
     }
     return render(request, "leads/lead_list.html", context)
 
+class LeadDetailView(DetailView):
+    template_name = "leads/lead_detail.html"
+    queryset = Lead.objects.all()
+    context_object_name = "lead"
 
 def lead_detail(request, pk):
     lead = Lead.objects.get(id=pk)
